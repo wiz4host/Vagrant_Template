@@ -1,0 +1,17 @@
+{
+  "nodes": {
+	"node001": {
+      ":ip": "10.0.0.15",
+      "ports": [],
+      ":memory": 1024,
+      ":bootstrap": "bootstrap-node.sh"
+    },
+	
+	"node002": {
+      ":ip": "10.0.0.16",
+      "ports": [],
+      ":memory": 1024,
+      ":bootstrap": "bootstrap-node.sh"
+    }
+  }
+}
