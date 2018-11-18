@@ -1,7 +1,8 @@
 # Vagrant_Template
 files for provisioning Virtual machine using Vagrant file in more effective way.
 
-#Prerequisite: below software should be installed at your machine first
+# Prerequisite: 
+Below software should be installed at your machine first
 1. Virtualbox
 2. Vagrant 
 
@@ -13,7 +14,7 @@ files for provisioning Virtual machine using Vagrant file in more effective way.
 
 If you are more specific, just check all files very closely. I kept the very common setting.
 
-#How to use :
+# How to use :
 1. Create a directory: C:/my_vagrant
 
 2. Go to C:/my_vagrant and Clone this repo: 
