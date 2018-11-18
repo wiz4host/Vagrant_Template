@@ -4,9 +4,12 @@ files for provisioning Virtual machine using Vagrant file in more effective way.
 Hashicorp Vagrant is indeed very powerful for spinning up VMs. But you will feel it’s real  power when you use it in more smarter way. Here is how you can make use of  Vagrant more effectively and systematic. You can keep your System more cleaner and less confusing. You only need to manage one JSON file in which you will provide your all VMs details instead of writing separate Vagrantfile for your each VM:
  # Prerequisite:
 Below software should be installed at your machine first
+
 Virtualbox
 Vagrant
+
 Create a directory anywhere in your system in which you want to start vagrant stuff. Lets assume it’s C:/my_vagrant
+
 Clone the wiz4host Vagrant Github repository:  https://github.com/wiz4host/Vagrant_Template.git
 
 # files and their work:
