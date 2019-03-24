@@ -17,12 +17,7 @@ nodes_config.each do |node|
 	
 	config.vm.define node_name do |config|
 	
-	  if node_name == 'node001'
-	    config.vm.box="bento/ubuntu-14.04"
-	  end
-	  if node_name == 'node002'
-	    config.vm.box="bento/centos-7.3"
-	  end
+	  config.vm.box = node_values[':os']
 		
 		
       # configures all forwarding ports in JSON array

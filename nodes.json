@@ -1,17 +1,27 @@
 {
   "nodes": {
     "node001": {
-      ":ip": "10.0.0.15",
+      ":ip": "10.0.0.131",
       "ports": [],
       ":memory": 1024,
+	  ":os": "bento/ubuntu-14.04",
       ":bootstrap": "bootstrap-node.sh"
     },
     
     "node002": {
-      ":ip": "10.0.0.16",
+      ":ip": "10.0.0.132",
       "ports": [],
       ":memory": 1024,
+	  ":os": "bento/centos-7.4",
       ":bootstrap": "bootstrap-node.sh"
-    }
+    },
+	
+	"node003": {
+      ":ip": "10.0.0.132",
+      "ports": [],
+      ":memory": 1024,
+	  ":os": "bento/ubuntu-16.04",
+      ":bootstrap": "bootstrap-node.sh"
+    },
   }
 }
