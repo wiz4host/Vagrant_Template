@@ -26,6 +26,7 @@ If you are more specific, just check all files very closely. I kept the very com
 2. Go to C:/my_vagrant and Clone this repo: "git clone https://github.com/wiz4host/Vagrant_Template.git"
 
 #nodes.json is single truth for nodes specifications like OS, memory IP etc
+
 3. In nodes.json I mentioned three nodes to get provisioned: node001 (UBUNTU-14), node002 (CENTOS-7) and node003 (UBUNTU-16). 
 
 4. Edit nodes.json if you want and provide details as per your choice ( otherwise you can go with value what I provided if your host machine is capable to allocate that much resource):
