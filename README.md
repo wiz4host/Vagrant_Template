@@ -25,40 +25,45 @@ If you are more specific, just check all files very closely. I kept the very com
 
 2. Go to C:/my_vagrant and Clone this repo: "git clone https://github.com/wiz4host/Vagrant_Template.git"
 
-3. In nodes.json I mentioned two nodes to get provisioned: node001 (CENTOS) and node002 (UBUNTU).
+#nodes.json is single truth for nodes specifications like OS, memory IP etc
+3. In nodes.json I mentioned three nodes to get provisioned: node001 (UBUNTU-14), node002 (CENTOS-7) and node003 (UBUNTU-16). 
 
-4. Check for Vagrantfile for required OS . I mentioned CentOS 7  for node001 and Ubuntu 14 for  node002. 
-if node_name == 'node001'
-  config.vm.box="bento/ubuntu-14.04" 
-end 
-if node_name == 'node002' 
-  config.vm.box="bento/centos-7.3" 
-end
-
-5. Edit nodes.json if you want and provide details as per your choice ( otherwise you can go with value what I provided if your host machine is capable to allocate that much resource):
+4. Edit nodes.json if you want and provide details as per your choice ( otherwise you can go with value what I provided if your host machine is capable to allocate that much resource):
 {
   "nodes": {
     "node001": {
-      ":ip": "10.0.0.15",
+      ":ip": "10.0.0.131",
       "ports": [],
       ":memory": 1024,
+	  ":os": "bento/ubuntu-14.04",
       ":bootstrap": "bootstrap-node.sh"
     },
+    
     "node002": {
-      ":ip": "10.0.0.16",
+      ":ip": "10.0.0.132",
       "ports": [],
       ":memory": 1024,
+	  ":os": "bento/centos-7.4",
+      ":bootstrap": "bootstrap-node.sh"
+    },
+	
+	"node003": {
+      ":ip": "10.0.0.132",
+      "ports": [],
+      ":memory": 1024,
+	  ":os": "bento/ubuntu-16.04",
       ":bootstrap": "bootstrap-node.sh"
     }
   }
 }
 
 
-6. bootstrap-node.sh will automatically identify OS flavor ( Only centos and UBUNTU) and run at last and install these packages for you:
+
+5. bootstrap-node.sh will automatically identify OS flavor ( Only centos and UBUNTU) and run at last and install these packages for you:
  if UBUNTU: wget, mlocate, dnsutils, git 
  if CENTOS: mlocate, bind-utils, git
  You can edit the packages as per your need before running vagrant up if you want.
  
  
-7. And lastly ==> Run: "vagrant up"
+6. And lastly ==> Run: "vagrant up"
 Your all comments and modification requests are most welcome. Go ahead and fork it and modify it as per your need.

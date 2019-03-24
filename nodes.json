@@ -22,6 +22,6 @@
       ":memory": 1024,
 	  ":os": "bento/ubuntu-16.04",
       ":bootstrap": "bootstrap-node.sh"
-    },
+    }
   }
 }
