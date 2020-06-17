@@ -10,6 +10,10 @@ Prerequisite:
          a) id_rsa_k8s
          b) id_rsa_k8s.pub
          
+       To create ssh-key pair, simply run :
+        
+        ssh-keygen
+         
   - [ OPTIONAL ]
   
        if ":mount: true" is set  inside any/all nodes inside nodes.json, it means you are trying to mount any host shared directory inside your   guest Vms. If so,
@@ -24,4 +28,9 @@ Prerequisite:
  NOTE:
  
     nodes.json 
+    
  is the file where user needs to provide the VM specifications. No other modifications are required.
+ 
+ 
+  For more details you can read our blog at our facebook page:  
+  https://www.facebook.com/notes/wiz4host/setup-kubernetes-cluster-with-vagrant-run-watch/1184611091905113/
