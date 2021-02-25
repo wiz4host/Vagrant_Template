@@ -38,7 +38,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
       config.vm.provision "file", source: "id_rsa_k8s", destination: "/tmp/id_rsa_k8s"
       config.vm.provision "file", source: "id_rsa_k8s.pub", destination: "/tmp/id_rsa_k8s.pub"
-      config.vm.provision :shell, :path => node_values[':bootstrap']
+      config.vm.provision :shell, :path => node_values[':bootstrap001']
       if node_values[':mount']
         config.vm.provision :shell, :path => "bootstrap-002.sh"
       end
