@@ -14,14 +14,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 nodes_config.each do |node|
     node_name   = node[0] # name of node
     node_values = node[1] # content of node
-	
+
 	config.vm.define node_name do |config|
-	
+
 	  config.vm.box = node_values[':os']
-		
-		
+
+
       # configures all forwarding ports in JSON array
-      ports = node_values['ports']
+      ports = node_values[':ports']
       ports.each do |port|
         config.vm.network :forwarded_port,
           host:  port[':host'],
@@ -37,7 +37,17 @@ nodes_config.each do |node|
         vb.customize ["modifyvm", :id, "--name", node_name]
       end
 
-      config.vm.provision :shell, :path => node_values[':bootstrap']
+      #config.vm.provision :shell, :path => node_values[':bootstrap']
+      bootstraps = node_values[':bootstraps']
+      bootstraps.each do |bootstrap|
+        config.vm.provision :shell,
+          :path => bootstrap[':role']
+      end
+
+
+
+
+
     end
   end
 end

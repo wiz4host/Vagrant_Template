@@ -19,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       config.vm.box = node_values[':os']
 
       # configures all forwarding ports in JSON array
-      ports = node_values['ports']
+      ports = node_values[':ports']
       ports.each do |port|
         config.vm.network :forwarded_port,
           host:  port[':host'],
