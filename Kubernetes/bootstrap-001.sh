@@ -9,7 +9,6 @@ EOF
 
  sudo chmod 600 /var/smbcredentials
  sudo mount.cifs --verbose //$2/$3 /mnt/$1 -o user=<YOUR_HOST_MACHINE_USERNAME>,pass=<YOUR_HOST_MACHINE_USERNAMEs_PASSWORD>,vers=2.0 0 0
- #echo "192.168.0.105/chef-ws /wsdata cifs credentials=/var/smbcredentials 0 0"
  echo "$2/$3 /mnt/$1 cifs credentials=/var/smbcredentials 0 0" | sudo tee -a /etc/fstab
 }
 
@@ -54,7 +53,7 @@ for pkg in ${pkgarr[@]}
  done
 
 updatedb
-samba_mount "wsdata" "192.168.0.105" "wsdata-k8s"
+samba_mount "wsdata" "10.1.1.1" "wsdata-k8s"
 echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 echo                                  bootstrap.sh done
 echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
