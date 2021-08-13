@@ -1,8 +1,8 @@
 #!/bin/bash
 #https://vitux.com/install-and-deploy-kubernetes-on-ubuntu/
-echo "10.0.0.131 k8s001 k8s001.local.domain" >> /etc/hosts
-echo "10.0.0.132 k8s002 k8s002.local.domain" >> /etc/hosts
-echo "10.0.0.133 k8s003 k8s003.local.domain" >> /etc/hosts
+echo "10.1.1.131 k8s001 k8s001.local.domain" >> /etc/hosts
+echo "10.1.1.132 k8s002 k8s002.local.domain" >> /etc/hosts
+echo "10.1.1.133 k8s003 k8s003.local.domain" >> /etc/hosts
 
 #Inserting Public key
 #permission fix for Private Key
@@ -85,7 +85,7 @@ systemctl daemon-reload
 systemctl restart kubelet
 
 #Initialize Kubernetes on the master node
-sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=10.0.0.131 >> /tmp/kubeadm-init.log 2>&1
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=10.1.1.131 >> /tmp/kubeadm-init.log 2>&1
 chmod 777 /tmp/kubeadm-init.log
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config

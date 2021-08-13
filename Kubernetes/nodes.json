@@ -1,8 +1,8 @@
 {
   "nodes": {
     "k8s001": {
-    ":ip": "10.0.0.131",
-    "ports": [{":host":2131, ":guest":22,  ":id": "ssh22"}],
+    ":ip": "10.1.1.131",
+    ":ports": [{":host":2131, ":guest":22,  ":id": "ssh22"}],
     ":memory": 4096,
 	  ":cpu": 2,
 	  ":os": "bento/ubuntu-16.04",
@@ -12,8 +12,8 @@
     },
 
     "k8s002": {
-     ":ip": "10.0.0.132",
-     "ports": [{":host":2132, ":guest":22,  ":id": "ssh22"}],
+     ":ip": "10.1.1.132",
+     ":ports": [{":host":2132, ":guest":22,  ":id": "ssh22"}],
      ":memory": 1024,
 	   ":cpu": 1,
 	   ":os": "bento/ubuntu-16.04",
@@ -23,8 +23,8 @@
     },
 
 	  "k8s003": {
-     ":ip": "10.0.0.133",
-     "ports": [{":host":2133, ":guest":22,  ":id": "ssh22"}],
+     ":ip": "10.1.1.133",
+     ":ports": [{":host":2133, ":guest":22,  ":id": "ssh22"}],
      ":memory": 1024,
 	   ":cpu": 1,
 	   ":os": "bento/ubuntu-16.04",
