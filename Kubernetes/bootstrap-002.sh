@@ -14,7 +14,7 @@ EOF
 }
 
 
-samba_mount "wsdata" "192.168.0.105" "wsdata-k8s"
+samba_mount "wsdata" "10.1.1.1" "wsdata-k8s"
 
 echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 echo                                  bootstrap-002.sh done
