@@ -1,8 +1,8 @@
 #!/bin/bash
 #https://vitux.com/install-and-deploy-kubernetes-on-ubuntu/
-echo "10.0.0.131 k8s001 k8s001.local.domain" >> /etc/hosts
-echo "10.0.0.132 k8s002 k8s002.local.domain" >> /etc/hosts
-echo "10.0.0.133 k8s003 k8s003.local.domain" >> /etc/hosts
+echo "10.1.1.131 k8s001 k8s001.local.domain" >> /etc/hosts
+echo "10.1.1.132 k8s002 k8s002.local.domain" >> /etc/hosts
+echo "10.1.1.133 k8s003 k8s003.local.domain" >> /etc/hosts
 
 #permission fix for Private Key
 sudo mkdir ${HOME}/.ssh
@@ -77,13 +77,13 @@ systemctl restart kubelet
 
 
 # sudo kubectl get nodes
-# nodeIP=$(ifconfig | grep "10.0.0." | awk -F"inet addr:" '{print $2}' |awk '{print $1}')
+# nodeIP=$(ifconfig | grep "10.1.1." | awk -F"inet addr:" '{print $2}' |awk '{print $1}')
 
 while true;
   do
-    code=$(curl -I -k -s https://10.0.0.131:6443 | head -1 | awk '{print $2}');
+    code=$(curl -I -k -s https://10.1.1.131:6443 | head -1 | awk '{print $2}');
     if [[ "$code" == 403 ]]; then
-      kubeadmjoincmd=$(ssh -i ${HOME}/.ssh/id_rsa_k8s -o StrictHostKeyChecking=no vagrant@10.0.0.131 "grep -A1 \"kubeadm join 10.0.0.131:6443 --token\" /tmp/kubeadm-init.log")
+      kubeadmjoincmd=$(ssh -i ${HOME}/.ssh/id_rsa_k8s -o StrictHostKeyChecking=no vagrant@10.1.1.131 "grep -A1 \"kubeadm join 10.1.1.131:6443 --token\" /tmp/kubeadm-init.log")
       echo "API is UP. Attempting to join....."
       sleep 60
       kubeadmjoincmd=$(echo $kubeadmjoincmd | sed 's|\\||g')
@@ -99,10 +99,10 @@ while true;
 #Copy .kube from master so that kubectl can be run from nodes as well which will connect to same master API.
   while true;
     do
-      ssh -i ${HOME}/.ssh/id_rsa_k8s -o StrictHostKeyChecking=no vagrant@10.0.0.131 "ls -d /tmp/.kube"
+      ssh -i ${HOME}/.ssh/id_rsa_k8s -o StrictHostKeyChecking=no vagrant@10.1.1.131 "ls -d /tmp/.kube"
       if [ $? == 0 ]; then
         echo "Ready to copy ~/.kube..."
-        sudo scp -o StrictHostKeyChecking=no -i ${HOME}/.ssh/id_rsa_k8s -rp vagrant@10.0.0.131:/tmp/.kube /tmp/
+        sudo scp -o StrictHostKeyChecking=no -i ${HOME}/.ssh/id_rsa_k8s -rp vagrant@10.1.1.131:/tmp/.kube /tmp/
         ls -ltr /tmp
         ls -ltr /tmp
         break;
