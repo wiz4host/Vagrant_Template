@@ -30,6 +30,12 @@ echo "===================================================================="
 
 
 echo  ++++++++++++++++++++++++++++++++++++++++++ UPDATE Packages and Repos++++++++++++++++++++++++++++++
+
+cd /etc/yum.repos.d/
+sed -i 's|mirror.centos.org|vault.centos.org|g' *.repo
+sed -i 's|#baseurl=vault|baseurl=vault|g' *.repo
+cd -
+
 if [[ $updaterepo == "y" ]]; then
     sudo $osinstaller update -y
 fi
