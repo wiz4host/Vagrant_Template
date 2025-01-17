@@ -9,23 +9,23 @@ os="${oslinux,,}"
 if [[ $os == "ubuntu" ]]; then
    osinstaller="apt-get"
 fi
-if [ $os == "centos" ]; then
-   osinstaller="yum"
+if [ $os == "Rocky" ]; then
+   osinstaller="dnf"
 fi
 
-if [ $want2install_docker == "yes" ]; then
+if [ "$want2install_docker" == "yes" ]; then
     sudo $osinstaller update -y
-    sudo $osinstaller check-update -y
+    sudo $osinstaller check-update
     curl -fsSL https://get.docker.com/ | sh
     sudo systemctl start docker
-    sudo systemctl status docker
     sudo systemctl enable docker
+    sudo systemctl status docker
     sudo usermod -aG docker $(whoami)
-    sudo usermod -aG docker username
+    echo "You must log out and log back in for Docker group changes to take effect."
     docker info
     docker run hello-world
     docker ps -a
     echo "docker installation done!!"
 else
-    echo "docker installation in NOT required"
+    echo "docker installation is NOT required"
 fi
