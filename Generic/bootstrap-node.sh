@@ -1,8 +1,9 @@
 #!/bin/bash
 
 
-pkgarrcentos=( wget mlocate bind-utils git )
-pkgarrubuntu=( wget mlocate dnsutils git )
+
+pkgarrRocky=( wget mlocate bind-utils git curl tree dos2unix cifs-utils )
+pkgarrubuntu=( wget mlocate dnsutils git curl tree dos2unix cifs-utils )
 updaterepo="y"
 
 #grep linux  OS  type
@@ -12,15 +13,15 @@ oslinux=$(cat /etc/*-release| grep -w 'NAME='|awk -F "=" '{print $2}'|sed -e 's/
 os="${oslinux,,}"
 
 
-#compare for ubuntu or centos
+#compare for ubuntu or Rocky
 if [[ $os == "ubuntu" ]]; then
    osinstaller="apt-get"
    pkgarr=${pkgarrubuntu[@]}
 fi
 
-if [ $os == "centos" ]; then
-   osinstaller="yum"
-   pkgarr=${pkgarrcentos[@]}
+if [ $os == "Rocky" ]; then
+   osinstaller="dnf "
+   pkgarr=${pkgarrRocky[@]}
 fi
 
 echo "===================================================================="
@@ -30,12 +31,6 @@ echo "===================================================================="
 
 
 echo  ++++++++++++++++++++++++++++++++++++++++++ UPDATE Packages and Repos++++++++++++++++++++++++++++++
-
-cd /etc/yum.repos.d/
-sed -i 's|mirror.centos.org|vault.centos.org|g' *.repo
-sed -i 's|#baseurl=vault|baseurl=vault|g' *.repo
-cd -
-
 if [[ $updaterepo == "y" ]]; then
     sudo $osinstaller update -y
 fi
