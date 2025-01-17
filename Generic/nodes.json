@@ -1,21 +1,33 @@
 {
   "nodes": {
     "node001": {
-      ":ip": "10.1.1.101",
-      ":ports": [{":host":2101, ":guest":22,  ":id": "ssh22"}],
+      ":ip": "10.11.11.110",
+      ":ports": [{":host":2110, ":guest":22,  ":id": "ssh22"}],
       ":memory": 2048,
       ":cpu": 2,
-      ":os": "bento/centos-8",
-      ":bootstraps": [{":role": "bootstrap-node.sh"},{":role": "install_docker.sh"}]
+      ":os": "bento/ubuntu-22.04",
+      ":bootstraps": [{":role": "bootstrap-node.sh"}]
     },
 
     "node002": {
-      ":ip": "10.1.1.102",
-      ":ports": [{":host":2102, ":guest":22,  ":id": "ssh22"}],
+      ":ip": "10.11.11.112",
+      ":ports": [{":host":2112, ":guest":22,  ":id": "ssh22"}],
       ":memory": 1024,
       ":cpu": 1,
-      ":os": "bento/ubuntu-18.04",
-      ":bootstraps": [{":role": "bootstrap-node.sh"},{":role": "install_docker.sh"}]
+      ":os": "bento/ubuntu-22.04",
+      ":bootstraps": [{":role": "bootstrap-node.sh"}]
+    },
+
+    "node003": {
+      ":ip": "10.11.11.113",
+      ":ports": [{":host":2113, ":guest":22,  ":id": "ssh22"}],
+      ":memory": 1024,
+      ":cpu": 1,
+      ":os": "bento/ubuntu-22.04",
+      ":bootstraps": [
+          {":role": "bootstrap-node.sh"}, 
+          {":role": "install_docker.sh"}
+        ]
     }
   }
 }
